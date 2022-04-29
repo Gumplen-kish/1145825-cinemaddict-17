@@ -1,23 +1,24 @@
-import TaskProfileView from '../src/view/task-profile.js';
-import TaskFilterView from '../src/view/task-filter.js';
-import TaskMainNavView from '../src/view/task-navigation.js';
-import TaskListFilmView from '../src/view/task-list.js';
-import TaskFilmCardView from '../src/view/task-card-film.js';
-import TaskShowMoreView from '../src/view/task-show-more.js';
-import TaskFilmPopupView from '../src/view/task-details-film-popup.js';
+import ProfileView from '../src/view/task-profile-view.js';
+import SortView from '../src/view/task-sort-view.js';
+import MainNavView from '../src/view/task-navigation-view.js';
+import FilmListView from '../src/view/task-list-view.js';
+import FilmCardView from '../src/view/task-card-film-view.js';
+import ShowMoreView from '../src/view/task-show-more-view.js';
+import FilmPopupView from '../src/view/task-details-film-popup-view.js';
 import {render} from '../src/render.js';
 import FilmPresenter from '../src/presenter/film-presenter.js';
 
 const siteHeaderElement = document.querySelector('.header');
 const siteMainElement = document.querySelector('.main');
 const filmPresenter = new FilmPresenter();
+const filmListElement = document.querySelector('.films-list');
 
-render(new TaskProfileView(), siteHeaderElement);
-render(new TaskMainNavView(), siteMainElement);
-render(new TaskFilterView(), siteMainElement);
-render(new TaskListFilmView(), siteMainElement);
-render(new TaskFilmCardView(), siteMainElement);
-render(new TaskShowMoreView(), siteMainElement);
-render(new TaskFilmPopupView(), siteMainElement);
+render(new ProfileView(), siteHeaderElement);
+render(new MainNavView(), siteMainElement);
+render(new SortView(), siteMainElement);
+render(new FilmListView(), siteMainElement);
+render(new FilmCardView(), filmListElement);
+render(new ShowMoreView(), siteMainElement);
+render(new FilmPopupView(), siteMainElement);
 
 filmPresenter.init(siteMainElement);

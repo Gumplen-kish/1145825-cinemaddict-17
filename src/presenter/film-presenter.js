@@ -1,19 +1,26 @@
-import TaskProfileView from '../view/task-profile.js';
-import TaskFilterView from '../view/task-filter.js';
-import TaskMainNavView from '../view/task-navigation.js';
-import TaskShowMoreView from '../view/task-show-more.js';
+import ProfileView from '../view/task-profile-view.js';
+import SortView from '../view/task-sort-view.js';
+import MainNavView from '../view/task-navigation-view.js';
+import FilmListView from '../view/task-list-view.js';
+import ShowMoreView from '../view/task-show-more-view.js';
 import {render} from '../render.js';
+import FilmCardView from '../view/task-card-film-view.js';
 
 
 export default class FilmPresenter {
+  filmComponent = new FilmCardView();
+  filmListComponent = new FilmListView();
 
   init = (filmContainer) => {
     this.filmContainer = filmContainer;
     render(this.filmComponent, this.filmContainer);
-    render(new TaskProfileView(), this.filmComponent.getElement());
-    render(new TaskMainNavView(), this.filmComponent.getElement());
-    render(new TaskFilterView(), this.filmComponent.getElement());
-
-    render(new TaskShowMoreView(), this.filmComponent.getElement());
+    render(new ProfileView(), this.filmComponent.getElement());
+    render(new MainNavView(), this.filmComponent.getElement());
+    render(new SortView(), this.filmComponent.getElement());
+    render(new FilmListView(),this.filmComponent.getElement());
+    for (let i = 0; i<3; i++) {
+      render(new FilmCardView(), this.filmListComponent.getElement());
+    }
+    render(new ShowMoreView(), this.filmComponent.getElement());
   };
 }
