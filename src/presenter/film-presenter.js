@@ -9,7 +9,7 @@ import FilmCardView from '../view/task-card-film-view.js';
 
 export default class FilmPresenter {
   filmComponent = new FilmCardView();
-  filmListComponent = new FilmListView();
+  filmListComponent = document.querySelector('.films-list');
 
   init = (filmContainer) => {
     this.filmContainer = filmContainer;
