@@ -14,4 +14,4 @@ render(new MainNavView(), siteMainElement);
 render(new SortView(), siteMainElement);
 
 const filmsPresenter = new FilmsPresenter(siteMainElement);
-filmsPresenter.init();
+filmsPresenter.init(siteMainElement);

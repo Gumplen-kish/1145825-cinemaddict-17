@@ -8,8 +8,7 @@ import { render } from '../render.js';
 const CountFilmsCards = 3;
 
 export default class FilmsPresenter {
-  init() {
-    const siteMainElement = document.querySelector('.main');
+  init(siteMainElement) {
     const filmListView = new FilmListView();
     render(filmListView, siteMainElement);
 
