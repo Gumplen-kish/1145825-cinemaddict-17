@@ -1,26 +1,22 @@
-import ProfileView from '../view/task-profile-view.js';
-import SortView from '../view/task-sort-view.js';
-import MainNavView from '../view/task-navigation-view.js';
-import FilmListView from '../view/task-list-view.js';
-import ShowMoreView from '../view/task-show-more-view.js';
-import {render} from '../render.js';
-import FilmCardView from '../view/task-card-film-view.js';
 
+import FilmListView from '../view/list-view.js';
+import FilmCardView from '../view/card-film-view.js';
+import ShowMoreView from '../view/show-more-view.js';
+import FiimPopupView from '../view/details-film-popup-view';
+import { render } from '../render.js';
 
-export default class FilmPresenter {
-  filmComponent = new FilmCardView();
-  filmListComponent = document.querySelector('.films-list');
+const CountFilmsCards = 3;
 
-  init = (filmContainer) => {
-    this.filmContainer = filmContainer;
-    render(this.filmComponent, this.filmContainer);
-    render(new ProfileView(), this.filmComponent.getElement());
-    render(new MainNavView(), this.filmComponent.getElement());
-    render(new SortView(), this.filmComponent.getElement());
-    render(new FilmListView(),this.filmComponent.getElement());
-    for (let i = 0; i<3; i++) {
-      render(new FilmCardView(), this.filmListComponent.getElement());
+export default class FilmsPresenter {
+  init() {
+    const siteMainElement = document.querySelector('.main');
+    const filmListView = new FilmListView();
+    render(filmListView, siteMainElement);
+
+    for (let i = 0; i < CountFilmsCards; i++) {
+      render(new FilmCardView(), filmListView.getElement().querySelector('.films-list__container'));
     }
-    render(new ShowMoreView(), this.filmComponent.getElement());
-  };
+    render(new ShowMoreView(), filmListView.getElement());
+    render(new FiimPopupView(), siteMainElement);
+  }
 }
