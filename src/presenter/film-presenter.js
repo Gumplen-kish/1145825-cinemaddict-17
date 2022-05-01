@@ -9,13 +9,14 @@ const CountFilmsCards = 3;
 
 export default class FilmsPresenter {
   init(siteMainElement) {
+    this.siteMainElement = siteMainElement;
     const filmListView = new FilmListView();
-    render(filmListView, siteMainElement);
 
+    render(filmListView, this.siteMainElement);
     for (let i = 0; i < CountFilmsCards; i++) {
       render(new FilmCardView(), filmListView.getElement().querySelector('.films-list__container'));
     }
     render(new ShowMoreView(), filmListView.getElement());
-    render(new FiimPopupView(), siteMainElement);
+    render(new FiimPopupView(), this.siteMainElement);
   }
 }
