@@ -168,7 +168,7 @@ const FiimPopupTemplate = (filmData) => {
   </section>`;
 };
 
-export default class FiimPopupView {
+export default class FilmPopupView {
   constructor (filmData) {
     this.filmData = filmData;
   }
