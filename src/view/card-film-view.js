@@ -1,7 +1,7 @@
 import {createElement} from '../render.js';
 
-const FilmCardTemplate = (filmData) => {
-  const {title, rating, yearRelease, duration, genre, filmDescription, countMessage} = filmData;
+const FilmCardTemplate = (filmCard) => {
+  const {title, rating, yearRelease, duration, genre, srcPoster, filmDescription, countMessage} = filmCard;
   return`<article class="film-card">
     <a class="film-card__link">
       <h3 class="film-card__title">${title}</h3>
@@ -11,7 +11,7 @@ const FilmCardTemplate = (filmData) => {
         <span class="film-card__duration">${duration}</span>
         <span class="film-card__genre">${genre}</span>
       </p>
-      <img src="./images/posters/the-man-with-the-golden-arm.jpg" alt="" class="film-card__poster">
+      <img src="./images/posters/${srcPoster}" alt="" class="film-card__poster">
       <p class="film-card__description">${filmDescription}</p>
       <span class="film-card__comments">${countMessage}</span>
     </a>
@@ -24,12 +24,12 @@ const FilmCardTemplate = (filmData) => {
 };
 
 export default class FilmCardView {
-  constructor (filmData) {
-    this.filmData = filmData;
+  constructor (filmCard) {
+    this.filmCard = filmCard;
   }
 
   getTemplate() {
-    return FilmCardTemplate(this.filmData);
+    return FilmCardTemplate(this.filmCard);
   }
 
   getElement() {

@@ -8,6 +8,7 @@ import {render} from './render.js';
 
 const siteHeaderElement = document.querySelector('.header');
 const siteMainElement = document.querySelector('.main');
+const cardFilmModel = new CardFilmModel();
 
 
 render(new ProfileView(), siteHeaderElement);

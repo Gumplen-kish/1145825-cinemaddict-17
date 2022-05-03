@@ -12,11 +12,11 @@ export default class FilmsPresenter {
     this.siteMainElement = siteMainElement;
     const filmListView = new FilmListView();
     this.cardFilmModel = cardFilmModel;
-    this.filmCards = [...this.CardFilmModel.getfilmCards()];
+    this.filmCards = [...this.cardFilmModel.getFilmCards()];
 
     render(filmListView, this.siteMainElement);
     for (let i = 0; i < CountFilmsCards; i++) {
-      render(new FilmCardView(), filmListView.getElement().querySelector('.films-list__container'));
+      render(new FilmCardView(this.filmCards[i]), filmListView.getElement().querySelector('.films-list__container'));
     }
 
     const filmCards = filmListView.querySelectorAll('.film-card__link');

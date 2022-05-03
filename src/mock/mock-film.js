@@ -1,5 +1,5 @@
 import {getRandom} from '../random.js';
-import {srcPoster, filmTitles, filmGenres} from '../data/film-data';
+import {srcPoster, filmTitles, filmGenres} from '../data/film-data.js';
 import {FilmText, Forename, Surname} from '../data/message-data.js';
 import {generateForenameSuname} from '../mock/mock-comment.js';
 
@@ -24,7 +24,7 @@ const generateCardFilm = () => {
     yearRelease: getRandom(1980, 1999),
     duration: `${getRandom(1, 3)}h ${getRandom(0, 59)}m`,
     genre: filmGenres[filmID],
-    description: generateFilmDescription(),
+    description: `${generateFilmDescription()}`,
     countMessage: `${getRandom(0, 24)} comments`,
   };
 };
