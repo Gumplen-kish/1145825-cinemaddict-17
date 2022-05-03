@@ -15,5 +15,5 @@ render(new ProfileView(), siteHeaderElement);
 render(new MainNavView(), siteMainElement);
 render(new SortView(), siteMainElement);
 
-const filmsPresenter = new FilmsPresenter(siteMainElement);
+const filmsPresenter = new FilmsPresenter();
 filmsPresenter.init(siteMainElement, cardFilmModel);

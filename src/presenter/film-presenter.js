@@ -12,27 +12,29 @@ export default class FilmsPresenter {
     this.siteMainElement = siteMainElement;
     const filmListView = new FilmListView();
     this.cardFilmModel = cardFilmModel;
-    this.filmCards = [...this.cardFilmModel.getFilmCards()];
+    this.cardFilms = [...this.cardFilmModel.cardFilm];
 
     render(filmListView, this.siteMainElement);
     for (let i = 0; i < COUNT_FILMS_CARD; i++) {
-      render(new FilmCardView(this.filmCards[i]), filmListView.getElement().querySelector('.films-list__container'));
+      render(new FilmCardView(this.cardFilms[i]), filmListView.element.querySelector('.films-list__container'));
     }
 
-    const filmCards = siteMainElement.querySelectorAll('.film-card__link');
-    filmCards.forEach((filmCard, i) => {
-      filmCard.addEventListener('click', () => {
-        const bodyElement = document.querySelector('body');
-        render(new FilmPopupView(this.filmCards[i],), bodyElement);
-        const closeButton = document.querySelector('.film-details__close-btn');
+    const cardFilmLinks = siteMainElement.querySelectorAll('.film-card__link');
+    const bodyElement = document.querySelector('body');
+
+
+    cardFilmLinks.forEach((cardFilmLink, i) => {
+      cardFilmLink.addEventListener('click', () => {
+        const filmPopupView = new FilmPopupView(this.cardFilms[i]);
+        render(filmPopupView, bodyElement);
+        const closeButton = filmPopupView.element.querySelector('.film-details__close-btn');
         closeButton.addEventListener('click', () => {
-          const popup = document.querySelector('.film-details');
-          popup.remove();
+          filmPopupView.element.remove();
         });
       });
     });
 
-    render(new ShowMoreView(), filmListView.getElement());
+    render(new ShowMoreView(), filmListView.element);
   }
 }
 
