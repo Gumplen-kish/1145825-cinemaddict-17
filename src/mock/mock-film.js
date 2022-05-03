@@ -16,7 +16,7 @@ const generateCardFilm = () => {
   return {
     poster: `./images/posters/${srcPoster[filmID]}`,
     title: filmTitles[filmID],
-    originalTitle: filmTitles[filmID],
+    titleOriginal: filmTitles[filmID],
     rating: `${getRandom(1, 9)}.${getRandom(1, 9)}`,
     director: `${generateForenameSuname(Forename, Surname)}`,
     screenwriter: 'Screenwriter\'s name',

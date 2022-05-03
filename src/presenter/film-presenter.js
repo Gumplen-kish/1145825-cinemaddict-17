@@ -5,7 +5,7 @@ import ShowMoreView from '../view/show-more-view.js';
 import FilmPopupView from '../view/details-film-popup-view';
 import { render } from '../render.js';
 
-const CountFilmsCards = 3;
+const COUNT_FILMS_CARD = 5;
 
 export default class FilmsPresenter {
   init(siteMainElement, cardFilmModel) {
@@ -15,15 +15,15 @@ export default class FilmsPresenter {
     this.filmCards = [...this.cardFilmModel.getFilmCards()];
 
     render(filmListView, this.siteMainElement);
-    for (let i = 0; i < CountFilmsCards; i++) {
+    for (let i = 0; i < COUNT_FILMS_CARD; i++) {
       render(new FilmCardView(this.filmCards[i]), filmListView.getElement().querySelector('.films-list__container'));
     }
 
-    const filmCards = filmListView.querySelectorAll('.film-card__link');
+    const filmCards = siteMainElement.querySelectorAll('.film-card__link');
     filmCards.forEach((filmCard, i) => {
       filmCard.addEventListener('click', () => {
         const bodyElement = document.querySelector('body');
-        render(new FilmPopupView(this.FilmDatas[i],), bodyElement);
+        render(new FilmPopupView(this.filmCards[i],), bodyElement);
         const closeButton = document.querySelector('.film-details__close-btn');
         closeButton.addEventListener('click', () => {
           const popup = document.querySelector('.film-details');
@@ -32,7 +32,7 @@ export default class FilmsPresenter {
       });
     });
 
-    render(new ShowMoreView(), this.filmListView.getElement());
+    render(new ShowMoreView(), filmListView.getElement());
   }
 }
 
