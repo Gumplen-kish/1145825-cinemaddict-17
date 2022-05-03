@@ -1,4 +1,4 @@
-const srcPoster = [
+const SRC_POSTER = [
   'made-for-each-other.png',
   'popeye-meets-sinbad.png',
   'sagebrush-trail.jpg',
@@ -8,7 +8,7 @@ const srcPoster = [
   'the-man-with-the-golden-arm.jpg'
 ];
 
-const filmTitles = [
+const FILM_TITLE = [
   'Made for Each Other',
   'Popeye Meets Sinbad',
   'Sagebrush Trail',
@@ -18,7 +18,7 @@ const filmTitles = [
   'The Man with the Golden Arm'
 ];
 
-const filmGenres = [
+const FILM_GENRE = [
   'Drama',
   'Comedy',
   'Thriller',
@@ -28,4 +28,4 @@ const filmGenres = [
   'Sci-fi'
 ];
 
-export {srcPoster, filmTitles, filmGenres};
+export {SRC_POSTER, FILM_TITLE, FILM_GENRE};
