@@ -5,15 +5,17 @@ import ShowMoreView from '../view/show-more-view.js';
 import FilmPopupView from '../view/details-film-popup-view';
 import { render } from '../render.js';
 
-const COUNT_FILMS_CARD = 6;
+const COUNT_FILMS_CARD = 5;
 
 export default class FilmsPresenter {
+  #showMoreView = new ShowMoreView();
+
   init(siteMainElement, cardFilmModel) {
     this.siteMainElement = siteMainElement;
     const filmListView = new FilmListView();
     this.cardFilmModel = cardFilmModel;
     this.cardFilms = [...this.cardFilmModel.cardFilm];
-
+    this.#showMoreView = new ShowMoreView();
     render(filmListView, this.siteMainElement);
     for (let i = 0; i < COUNT_FILMS_CARD; i++) {
       render(new FilmCardView(this.cardFilms[i]), filmListView.element.querySelector('.films-list__container'));
@@ -47,7 +49,11 @@ export default class FilmsPresenter {
     });
 
 
-    render(new ShowMoreView(), filmListView.element);
+    if(this.cardFilms.length > COUNT_FILMS_CARD) {
+      render(this.#showMoreView, filmListView.element.querySelector('.films-list__container'));
+
+      this.#showMoreView.element.addEventListener('click',this.#showMoreView.handleShowMoreButtonClick);
+    }
   }
 }
 

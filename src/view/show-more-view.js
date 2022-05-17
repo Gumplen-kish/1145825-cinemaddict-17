@@ -1,7 +1,8 @@
 import {createElement} from '../render.js';
 
-const ShowMoreTemplate = () =>
-  '<button class="films-list__show-more">Show more</button>';
+const ShowMoreTemplate = () => (
+  '<button class="films-list__show-more">Show more</button>'
+);
 
 export default class ShowMoreView {
   #element = null;
