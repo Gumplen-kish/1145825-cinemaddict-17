@@ -5,7 +5,7 @@ import ShowMoreView from '../view/show-more-view.js';
 import FilmPopupView from '../view/details-film-popup-view';
 import { render } from '../render.js';
 
-const COUNT_FILMS_CARD = 5;
+const COUNT_FILMS_CARD = 6;
 
 export default class FilmsPresenter {
   init(siteMainElement, cardFilmModel) {
@@ -28,11 +28,24 @@ export default class FilmsPresenter {
         const filmPopupView = new FilmPopupView(this.cardFilms[i]);
         render(filmPopupView, bodyElement);
         const closeButton = filmPopupView.element.querySelector('.film-details__close-btn');
-        closeButton.addEventListener('click', () => {
+
+        const escKeyDown = (evt) => {
+          if (evt.key === 'Escape' || evt.key === 'Esc') {
+            evt.preventDefault();
+            filmPopupView.element.remove();
+            document.removeEventListener('keydown', escKeyDown);
+          }
+        };
+
+        closeButton.addEventListener('click', (evt) => {
+          evt.preventDefault();
           filmPopupView.element.remove();
+          document.removeEventListener('keydown', escKeyDown);
         });
+        document.addEventListener('keydown', escKeyDown);
       });
     });
+
 
     render(new ShowMoreView(), filmListView.element);
   }
